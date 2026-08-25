@@ -1,0 +1,4 @@
+interface:
+  display_name: "Import vLLM Ascend Operator"
+  short_description: "Port vLLM-ascend Ascend C operators into SGLang-Kernel-NPU."
+  default_prompt: "Use $import-vllm-ascend-operator to port an operator from vLLM-ascend into this repository."

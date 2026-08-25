@@ -8,13 +8,16 @@ These skills encode the institutional knowledge needed to develop, debug, and op
 
 ## Skills
 
-| Skill | Purpose |
-|-------|---------|
-| [`sglang-skill`](skills/sglang-skill/SKILL.md) | Core SGLang development on both CUDA and Ascend NPU — architecture map, kernel layout, debugging patterns, and launch commands |
-| [`sglang-debug-ascend`](skills/sglang-debug-ascend/SKILL.md) | Remote workflow for running and validating code on an Ascend 910C node via SSH + Docker |
-| [`sglang-perfermance-ascend`](skills/sglang-perfermance-ascend/SKILL.md) | Performance analysis using Ascend PyTorch Profiler — collection, bottleneck identification, and interpretation of `kernel_details.csv` / `trace_view.json` |
-| [`add-triton-npu-kernel`](skills/add-triton-npu-kernel/SKILL.md) | Step-by-step guide for writing JIT Triton kernels that compile via Triton-Ascend and run on Ascend NPU vector cores |
-| [`sglang-pr-describer`](skills/sglang-pr-describer/SKILL.md) | Draft PR descriptions conforming to `sgl-project/sglang` community conventions |
+The repository currently contains 54 top-level skills and 75 `SKILL.md` playbooks, including nested ATB, OpenMMLab, and SSH workflow skills. The SGLang and Ascend skill set is synchronized from the local Codex skill library.
+
+| Area | Skills | Purpose |
+|------|--------|---------|
+| SGLang | [`sglang-skill`](skills/sglang-skill/SKILL.md), [`sglang-debug-ascend`](skills/sglang-debug-ascend/SKILL.md), [`sglang-accuracy-debugging`](skills/sglang-accuracy-debugging/SKILL.md), [`sglang-npu-adapter`](skills/sglang-npu-adapter/SKILL.md), [`sglang-ascend-to-main-port`](skills/sglang-ascend-to-main-port/SKILL.md), [`sglang-perfermance-ascend`](skills/sglang-perfermance-ascend/SKILL.md), [`sglang-pr-describer`](skills/sglang-pr-describer/SKILL.md) | Development, remote validation, accuracy and performance debugging, model adaptation, upstream porting, and PR preparation. |
+| Ascend platform | [`ascend-docker`](skills/ascend-docker/SKILL.md), [`ascend-a5-optimization`](skills/ascend-a5-optimization/SKILL.md), [`ascend-profiling-anomaly`](skills/ascend-profiling-anomaly/SKILL.md), [`npu-smi`](skills/npu-smi/SKILL.md), [`hccl-test`](skills/hccl-test/SKILL.md) | Containers, A5 optimization, profiling analysis, NPU health checks, and collective-communication testing. |
+| AscendC / CANN | [`ascendc-operator-dev`](skills/ascendc-operator-dev/SKILL.md), [`ascendc-operator-code-review`](skills/ascendc-operator-code-review/SKILL.md), [`cann-a5-operator-compile`](skills/cann-a5-operator-compile/SKILL.md), [`cann-operator-env-config`](skills/cann-operator-env-config/SKILL.md) | End-to-end operator development, review, compilation, precision/performance work, and CANN environment setup. |
+| ATB / ACLNN | [`ascend-transformer-boost`](skills/ascend-transformer-boost/SKILL.md), [`cann-nnal-installer`](skills/cann-nnal-installer/SKILL.md) | ATB operator workflows, ACLNN migration, CSV testing, debugging, and NNAL installation. |
+| Triton / CATLASS | [`add-triton-npu-kernel`](skills/add-triton-npu-kernel/SKILL.md), [`triton-operator-dev`](skills/triton-operator-dev/SKILL.md), [`catlass-operator-dev`](skills/catlass-operator-dev/SKILL.md), [`vector-triton-ascend-ops-optimizer`](skills/vector-triton-ascend-ops-optimizer/SKILL.md) | NPU kernels and operators: design, generation, testing, correctness evaluation, and optimization. |
+| Model ecosystem | [`drivingsdk-ascend-model-migration`](skills/drivingsdk-ascend-model-migration/SKILL.md), [`npu-adapter-reviewer`](skills/npu-adapter-reviewer/SKILL.md), [`vllm-ascend-deploy`](skills/vllm-ascend-deploy/SKILL.md), [`import-vllm-ascend-operator`](skills/import-vllm-ascend-operator/SKILL.md) | Model migration/training, OpenMMLab installation, NPU adaptation review, vLLM-Ascend deployment, and operator import. |
 
 ---
 
