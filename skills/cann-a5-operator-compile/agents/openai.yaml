@@ -1,0 +1,4 @@
+interface:
+  display_name: "CANN A5 Operator Compile"
+  short_description: "Preflight and debug CANN 9.1 AscendC kernels for Ascend A5"
+  default_prompt: "Preflight or debug this CANN 9.1 AscendC operator build for Ascend A5 with minimal source changes."
