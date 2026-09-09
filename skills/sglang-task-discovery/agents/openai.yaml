@@ -1,0 +1,4 @@
+interface:
+  display_name: "SGLang Task Discovery"
+  short_description: "Find evidence-backed SGLang and Ascend NPU tasks"
+  default_prompt: "Use $sglang-task-discovery to find and rank actionable contribution tasks in SGLang and its Ascend NPU ecosystem."

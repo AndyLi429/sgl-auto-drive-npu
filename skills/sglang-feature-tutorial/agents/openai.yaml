@@ -1,0 +1,4 @@
+interface:
+  display_name: "SGLang Feature Tutorial"
+  short_description: "Create beginner-friendly Chinese SGLang code tutorials"
+  default_prompt: "Use $sglang-feature-tutorial to explain a SGLang feature in Chinese with source-backed Mermaid diagrams and a code-reading path."

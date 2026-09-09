@@ -1,0 +1,4 @@
+interface:
+  display_name: "SGLang Model Tutorial"
+  short_description: "Explain model architectures and their SGLang execution paths"
+  default_prompt: "Use $sglang-model-tutorial to create a Chinese source-backed tutorial for a model architecture and its SGLang integration."
