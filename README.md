@@ -22,14 +22,14 @@ The repository currently contains 61 top-level skills and 82 `SKILL.md` playbook
 
 ---
 
-## Who should use which skills?
+## Skill output audience
 
-All skills are executed by Claude Code or Codex, but they serve two primary workflows. The classification below indicates the intended caller; it is not an access restriction.
+All skills are executed by Claude Code or Codex. Classify them by **who consumes the output**, not by who starts the conversation. A skill may be useful in both workflows, but its primary output determines the recommended category.
 
-| Primary caller | Best-fit skills | Typical request |
-|---|---|---|
-| **Developers** | [`sglang-feature-tutorial`](skills/sglang-feature-tutorial/SKILL.md), [`sglang-model-tutorial`](skills/sglang-model-tutorial/SKILL.md), [`sglang-debug-ascend`](skills/sglang-debug-ascend/SKILL.md), [`sglang-accuracy-debugging`](skills/sglang-accuracy-debugging/SKILL.md), [`sglang-perfermance-ascend`](skills/sglang-perfermance-ascend/SKILL.md), [`ascend-docker`](skills/ascend-docker/SKILL.md), [`npu-smi`](skills/npu-smi/SKILL.md), [`hccl-test`](skills/hccl-test/SKILL.md), and the AscendC/Triton operator development skills | Learn a code path, configure an NPU environment, develop or debug an operator, validate accuracy, profile performance, or test HCCL. |
-| **AI agents** | [`sglang-skill`](skills/sglang-skill/SKILL.md), [`sglang-task-discovery`](skills/sglang-task-discovery/SKILL.md), [`sglang-pr-describer`](skills/sglang-pr-describer/SKILL.md), [`sglang-pr-summary`](skills/sglang-pr-summary/SKILL.md), [`sglang-ascend-pr-review`](skills/sglang-ascend-pr-review/SKILL.md), [`sglang-benchmark-result-analysis`](skills/sglang-benchmark-result-analysis/SKILL.md), [`npu-adapter-reviewer`](skills/npu-adapter-reviewer/SKILL.md), [`sglang-ascend-to-main-port`](skills/sglang-ascend-to-main-port/SKILL.md), and [`ai-infra-paper-reading`](skills/ai-infra-paper-reading/SKILL.md) | Discover contribution work, trace implementation paths, prepare or review PRs, compare benchmarks, assess NPU migration, and turn papers into engineering actions. |
+| Output audience | Definition | Representative skills | Typical result |
+|---|---|---|---|
+| **Developers** | The output is a report, explanation, comparison, review, or recommendation that a developer uses to decide what to implement, prioritize, validate, or discuss next. | [`sglang-task-discovery`](skills/sglang-task-discovery/SKILL.md), [`sglang-feature-tutorial`](skills/sglang-feature-tutorial/SKILL.md), [`sglang-model-tutorial`](skills/sglang-model-tutorial/SKILL.md), [`sglang-pr-describer`](skills/sglang-pr-describer/SKILL.md), [`sglang-pr-summary`](skills/sglang-pr-summary/SKILL.md), [`sglang-ascend-pr-review`](skills/sglang-ascend-pr-review/SKILL.md), [`sglang-benchmark-result-analysis`](skills/sglang-benchmark-result-analysis/SKILL.md), and [`ai-infra-paper-reading`](skills/ai-infra-paper-reading/SKILL.md) | Contribution backlog, design explanation, PR draft/review, benchmark comparison, or paper-derived engineering decision. |
+| **AI agents** | The output is an implementation, environment change, test result, deployment, migration, or debugging action that closes a concrete engineering task. | [`sglang-skill`](skills/sglang-skill/SKILL.md), [`sglang-debug-ascend`](skills/sglang-debug-ascend/SKILL.md), [`sglang-accuracy-debugging`](skills/sglang-accuracy-debugging/SKILL.md), [`sglang-npu-adapter`](skills/sglang-npu-adapter/SKILL.md), [`sglang-ascend-to-main-port`](skills/sglang-ascend-to-main-port/SKILL.md), [`ascend-docker`](skills/ascend-docker/SKILL.md), [`npu-smi`](skills/npu-smi/SKILL.md), [`hccl-test`](skills/hccl-test/SKILL.md), and the AscendC/Triton operator development skills | NPU environment setup, code migration or implementation, focused validation, performance debugging, or deployment artifact. |
 
 Engineers can invoke a skill explicitly by name (for example, `use sglang-ascend-pr-review to review PR #123`) or describe the task normally and let the coding agent select it from the frontmatter description.
 
