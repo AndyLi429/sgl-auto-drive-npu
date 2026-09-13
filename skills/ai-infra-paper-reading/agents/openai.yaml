@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Infra Paper Reading"
+  short_description: "Read AI systems papers with evidence"
+  default_prompt: "Use $ai-infra-paper-reading to analyze this AI infrastructure paper in Chinese."
