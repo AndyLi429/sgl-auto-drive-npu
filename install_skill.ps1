@@ -1,7 +1,19 @@
 # install_skill.ps1
-param([Parameter(Mandatory)][string]$GitHubUrl)
+param([string]$GitHubUrl = "")
 
-# 解析 owner/repo
+if ([string]::IsNullOrWhiteSpace($GitHubUrl)) {
+    $source = Join-Path $PSScriptRoot "skills"
+    $targets = @((Join-Path $HOME ".claude\skills"), (Join-Path $HOME ".codex\skills"))
+    if (-not (Test-Path -LiteralPath $source -PathType Container)) { throw "Skills directory not found: $source" }
+    foreach ($target in $targets) {
+        New-Item -ItemType Directory -Path $target -Force | Out-Null
+        Copy-Item -Path (Join-Path $source "*") -Destination $target -Recurse -Force
+        Write-Host "OK: installed to $target"
+    }
+    Write-Host "Done."
+    exit 0
+}
+
 $uri = [System.Uri]$GitHubUrl
 $segments = $uri.AbsolutePath.Trim("/") -split "/"
 $owner = $segments[0]
@@ -36,8 +48,8 @@ foreach ($skill in $skillList) {
 
     Write-Host "`n[$skillName] $mdUrl"
 
-    foreach ($base in @("C:\Users\$env:USERNAME\.claude\skills", "C:\Users\$env:USERNAME\.codex\skills")) {
-        $dir = "$base\$skillName"
+    foreach ($base in @((Join-Path $HOME ".claude\skills"), (Join-Path $HOME ".codex\skills"))) {
+        $dir = Join-Path $base $skillName
         New-Item -ItemType Directory -Force $dir | Out-Null
         try {
             Invoke-WebRequest -Uri $mdUrl -OutFile "$dir\SKILL.md" -ErrorAction Stop

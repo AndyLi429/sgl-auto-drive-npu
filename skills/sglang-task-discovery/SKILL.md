@@ -116,3 +116,38 @@ git log --since=YYYY-MM-DD -- <path>
 | Roadmap 提到方向，所以是紧急任务 | 只有 deadline/priority 的一手证据才能提高紧急度 |
 | merged PR 留有 follow-up，所以仍待做 | 搜索该 PR 合入后的提交与关联 PR |
 | GPU 已支持，所以 NPU 一定需要照搬 | 先证明真实用户价值、平台可行性与维护者接受度 |
+
+## AMD/CUDA 特性借鉴到 NPU
+
+当进行需求发现时，除检查 SGLang 和 `sgl-kernel-npu` 的 Issue、PR 与 TODO 外，还要关注 AMD/ROCm 和 CUDA 后端近期合入的特性及算子优化，判断其中是否存在可迁移到 Ascend NPU 的机会。
+
+### 调研范围
+
+- 检查 SGLang 主仓库中 AMD/ROCm、CUDA、Triton、FlashInfer、Attention、MoE、量化、通信和调度相关的近期 merged PR、open PR、Issue 及 release notes。
+- 优先查看 PR 正文、review、变更文件和 benchmark，记录合入时间、commit、适用硬件、依赖库和性能收益；不要只根据标题推断价值。
+- 对算子优化重点确认：算子语义、输入输出与数据类型、shape/stride 约束、数值精度、融合边界、workspace、并行策略、内存访问模式以及是否依赖 CUDA/ROCm 专有 API。
+- 将 AMD 与 CUDA 的实现分别分析。两者都采用的设计更可能是通用优化；仅依赖某一 GPU 后端指令、内存模型或编译器特性的实现，不得直接视为 NPU 方案。
+
+### NPU 借鉴分析
+
+每个候选项都要给出简短的可行性判断，至少覆盖：
+
+1. **可借鉴部分**：算法、调度策略、融合思路、布局设计、缓存/通信策略或测试方法。
+2. **NPU 差异**：Ascend C/Triton/CANN/torch-npu 是否有对应能力，是否需要 ACLNN、TBE、AscendC 或框架适配。
+3. **迁移难点**：硬件指令、内存层级、同步模型、数据类型、动态 shape、算子覆盖和精度风险。
+4. **验证路径**：建议的 NPU 实现位置、最小复现输入、精度测试、性能 benchmark，以及与 CUDA/AMD 基线的对照方式。
+5. **结论等级**：`可直接借鉴`、`需要 NPU 重写`、`仅可借鉴思路` 或 `暂不建议迁移`，并说明依据。
+
+### 输出要求
+
+把 GPU 侧发现作为独立的“跨后端借鉴候选”章节，不要直接混入已确认的 NPU 需求 Top N。每项使用以下字段：
+
+| 字段 | 内容 |
+|---|---|
+| GPU 来源 | PR/Issue/release note 链接、merged 时间、commit 和后端 |
+| 特性或优化 | 解决的问题、修改的模块/算子和实测收益 |
+| NPU 对应位置 | 可能涉及的 SGLang、`sgl-kernel-npu`、CANN 或测试路径 |
+| 可迁移性 | 结论等级、可复用设计和不可复用部分 |
+| 实施建议 | 最小任务边界、验证方法、难度/紧急度和证据置信度 |
+
+如果没有足够的一手证据，标记为“待验证”，不得把 GPU 的性能收益直接外推为 NPU 收益，也不得据此声称 NPU 已存在明确需求。

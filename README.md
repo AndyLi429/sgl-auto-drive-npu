@@ -26,6 +26,14 @@ The repository currently contains 57 top-level skills and 78 `SKILL.md` playbook
 ### Windows (PowerShell)
 
 ```powershell
+.\install_skill.ps1
+```
+
+This installs the local repository's complete `skills/` directory to both `~/.claude/skills/` and `~/.codex/skills/`.
+
+To install directly from GitHub instead, use:
+
+```powershell
 .\install_skill.ps1 https://github.com/AndyLi429/sgl-auto-drive-npu
 ```
 
